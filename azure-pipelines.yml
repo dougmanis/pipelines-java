@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: macos-lab
 
 steps:
 - task: Maven@3
