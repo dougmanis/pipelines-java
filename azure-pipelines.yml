@@ -10,6 +10,15 @@ pool:
   name: macos-lab
 
 steps:
+- script: |
+    set -e
+    echo "Detecting JDK 17..."
+    export JAVA_HOME_17_X64=$(/usr/libexec/java_home -v 17)
+    echo "##vso[task.setvariable variable=JAVA_HOME_17_X64]$JAVA_HOME_17_X64"
+    echo "JAVA_HOME_17_X64=$JAVA_HOME_17_X64"
+    java -version
+  displayName: Set JAVA_HOME_17_X64 (self-hosted macOS)
+  
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
